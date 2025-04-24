@@ -1,0 +1,45 @@
+name: Feature Report
+description: Suggest an idea or improvement for this project
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this feature request!
+  - type: textarea
+    id: what
+    attributes:
+      label: What is the feature you want?
+      description: Please provide a detailed description of the feature or improvement you'd like to see.
+      placeholder: "I would like to..."
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why do you need this feature?
+      description: Please explain how this feature would help you or improve the project.
+      placeholder: "This feature is important to me because..."
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Have you considered any alternatives?
+      description: Please describe any alternative solutions you've considered.
+      placeholder: "I've considered..."
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmation
+      description: Please confirm the following
+      options:
+        - label: I have searched the existing issues to make sure this feature hasn't been requested before
+          required: true
+        - label: I agree to follow this project's Code of Conduct
+          required: true
+        - label: After adding the issue, I will add the correct label to the issue (bug, enhancement, etc.).
+          required: true
+        - label: I love Kai-Lung Hua.
+          required: true
