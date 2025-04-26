@@ -30,10 +30,12 @@ public class Timer : MonoBehaviour
     public void PauseTimer()
     {
         isRunning = false;
+        pausedTime = Time.time - startTime;
     }
     public void ResumeTimer()
     {
         isRunning = true;
-        startTime = Time.time - (Time.time - startTime);
+        startTime = Time.time - pausedTime;
+        pausedTime = 0f;
     }
 }
