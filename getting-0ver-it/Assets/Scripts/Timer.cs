@@ -8,11 +8,12 @@ public class Timer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     private bool isRunning = true;
     private float startTime;
-
+    private float prevTime;
     void Start()
     {
         // initialize time
         startTime = Time.time;
+        prevTime = startTime;
     }
 
     void Update()
@@ -30,10 +31,11 @@ public class Timer : MonoBehaviour
     public void PauseTimer()
     {
         isRunning = false;
+        prevTime = Time.time - startTime;
     }
     public void ResumeTimer()
     {
         isRunning = true;
-        startTime = Time.time - (Time.time - startTime);
+        startTime = prevTime;
     }
 }
