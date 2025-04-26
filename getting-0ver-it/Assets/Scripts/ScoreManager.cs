@@ -20,7 +20,6 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScore(int amount)
     {
-        Awake();
         score += amount;
         scoreText.text = "Score: " + score;
     }
