@@ -6,14 +6,36 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText;
-    float elapsed_time = 0f;
+    private bool isRunning = true;
+    private float startTime;
+
+    void Start()
+    {
+        // initialize time
+        startTime = Time.time;
+    }
 
     void Update()
     {
-        elapsed_time += Time.deltaTime;
-        int minutes = Mathf.FloorToInt(elapsed_time / 60);
-        int seconds = Mathf.FloorToInt(elapsed_time % 60);
+        if (!isRunning) return;
 
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        // update newer time
+        float elapsedTime = Time.time - startTime;
+
+        string minutes = ((int)elapsedTime / 60).ToString("00");
+        string seconds = (elapsedTime % 60).ToString("00.00");
+
+        timerText.text = "Time: " + minutes + ":" + seconds;
+    }
+    public void PauseTimer()
+    {
+        isRunning = false;
+        pausedTime = Time.time - startTime;
+    }
+    public void ResumeTimer()
+    {
+        isRunning = true;
+        startTime = Time.time - pausedTime;
+        pausedTime = 0f;
     }
 }
