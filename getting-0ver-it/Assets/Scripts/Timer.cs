@@ -6,7 +6,6 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText;
-    private bool isRunning = true;
     private float startTime;
 
     void Start()
