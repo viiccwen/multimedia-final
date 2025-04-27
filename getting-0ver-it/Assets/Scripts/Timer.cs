@@ -8,7 +8,6 @@ public class Timer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     private bool isRunning = true;
     private float startTime;
-    private float pausedTime;
 
     void Start()
     {
@@ -27,16 +26,5 @@ public class Timer : MonoBehaviour
         string seconds = (elapsedTime % 60).ToString("00.00");
 
         timerText.text = "Time: " + minutes + ":" + seconds;
-    }
-    public void PauseTimer()
-    {
-        isRunning = false;
-        pausedTime = Time.time - startTime;
-    }
-    public void ResumeTimer()
-    {
-        isRunning = true;
-        startTime = Time.time - pausedTime;
-        pausedTime = 0f;
     }
 }
