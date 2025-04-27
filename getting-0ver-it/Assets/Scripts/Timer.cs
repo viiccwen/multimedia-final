@@ -8,6 +8,7 @@ public class Timer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     private bool isRunning = true;
     private float startTime;
+    private float pausedTime;
 
     void Start()
     {
