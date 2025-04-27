@@ -8,7 +8,7 @@ public class BoundaryDetection : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            collision.transform.position = new Vector3(-216.25f, 32f, 0f);
+            collision.transform.position = new Vector3(-216.25f, 35f, 0f);
         }
     }
 

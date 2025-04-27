@@ -7,12 +7,14 @@ public class TriggerableObject : MonoBehaviour
     [Header("2D-triggerable object")]
     public int score = 1;
     private Animator animator;
-    
+    private bool isTriggered = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // while other object collide with this triggerable object at Player layer, add the score
-        if(collision.CompareTag("Player"))
+        if(!isTriggered && collision.CompareTag("Player"))
         {
+            isTriggered = true;
+
             ScoreManager.instance.AddScore(score);
 
             // play the animation
