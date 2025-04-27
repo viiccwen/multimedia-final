@@ -7,6 +7,11 @@ public class Head : MonoBehaviour {
     void Start() { StartCoroutine(Blink()); }
 
     void Update() {
+        // If the game is paused, do not update the head's rotation
+        if (PauseManager.gameIsPaused) {
+            return;
+        }
+
         Vector3 mouseDir =
             new Vector3(Input.mousePosition.x / Screen.width * 2.0f - 1.0f,
                         Input.mousePosition.y / Screen.height * 2.0f - 1.0f);
@@ -22,6 +27,11 @@ public class Head : MonoBehaviour {
 
     IEnumerator Blink() {
         while (true) {
+            // If the game is paused, do not blink
+            if (PauseManager.gameIsPaused) {
+                yield return null;
+            }
+
             int waitTime = Random.Range(0, 10);
             yield return new WaitForSeconds(waitTime);
 
