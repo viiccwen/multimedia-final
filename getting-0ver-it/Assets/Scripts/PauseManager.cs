@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour {
     public static bool gameIsPaused = false;
@@ -36,5 +37,11 @@ public class PauseManager : MonoBehaviour {
         // Pause the game by setting time scale to 0
         Time.timeScale = 0f;
         gameIsPaused = true;
+    }
+
+    public void LoadMainMenu() {
+        Time.timeScale = 1f; // Ensure time scale is reset when loading a new scene
+        gameIsPaused = false;
+        SceneManager.LoadScene("StartMenu");
     }
 }
