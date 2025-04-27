@@ -29,7 +29,7 @@ public class Head : MonoBehaviour {
         while (true) {
             // If the game is paused, do not blink
             if (PauseManager.gameIsPaused) {
-                continue;
+                yield return null;
             }
 
             int waitTime = Random.Range(0, 10);
