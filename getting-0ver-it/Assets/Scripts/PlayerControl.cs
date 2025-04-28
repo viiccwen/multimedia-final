@@ -75,10 +75,13 @@ public class PlayerControl : MonoBehaviour {
 
         // Compute new hammer pos
         Vector3 newHammerPos = body.position + smoothedOffsetVector;
+        Vector3 movementVector = newHammerPos - hammerHead.position;
+        newHammerPos = hammerHead.position + movementVector * 0.2f;
+
+        // Update hammer pos
         hammerRb.MovePosition(newHammerPos);
 
-        if (smoothedOffsetVector != Vector3.zero) {
-            hammerHead.rotation = Quaternion.FromToRotation(Vector3.right, smoothedOffsetVector);
-        }
+        // Update hammer rotation
+        hammerHead.rotation = Quaternion.FromToRotation(Vector3.right, newHammerPos - body.position);
     }
 }
