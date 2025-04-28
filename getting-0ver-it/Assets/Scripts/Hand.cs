@@ -4,9 +4,6 @@ public class Hand : MonoBehaviour {
     public Transform hammerHandle;
     public Sprite[] sprites;
     public bool rightHand = false;
-
-    void Start() {}
-
     void Update() {
         Vector3 handDir = hammerHandle.position - transform.position;
 

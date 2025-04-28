@@ -6,8 +6,8 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-    public TextMeshProUGUI scoreText;
-    public int score = 0;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    private int score = 0;
        
     private void Awake()
     {
@@ -24,15 +24,14 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = "Score: " + score;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public int getScore() { return score; }
+    public void setScore(int score) { 
+        this.score = score;
+        scoreText.text = "Score: " + score;
     }
-
-    // Update is called once per frame
-    void Update()
+    public void ResetScore()
     {
-        
+        score = 0;
+        scoreText.text = "Score: " + score;
     }
 }
