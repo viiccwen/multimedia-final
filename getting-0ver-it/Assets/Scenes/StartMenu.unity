@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 74523767}
   - component: {fileID: 74523766}
   m_Layer: 5
-  m_Name: btn_countinue
+  m_Name: btnContinue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,7 +204,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 74523767}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 556878298}
+        m_TargetAssemblyTypeName: StartMenu, Assembly-CSharp
+        m_MethodName: Continue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &74523767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,7 +401,7 @@ GameObject:
   - component: {fileID: 185730744}
   - component: {fileID: 185730743}
   m_Layer: 5
-  m_Name: txt_quit
+  m_Name: txtQuit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -523,7 +535,7 @@ GameObject:
   - component: {fileID: 223122245}
   - component: {fileID: 223122244}
   m_Layer: 5
-  m_Name: txt_settings
+  m_Name: txtSettings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -732,7 +744,7 @@ GameObject:
   - component: {fileID: 284417708}
   - component: {fileID: 284417707}
   m_Layer: 5
-  m_Name: txt_back
+  m_Name: txtBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -866,7 +878,7 @@ GameObject:
   - component: {fileID: 320485174}
   - component: {fileID: 320485173}
   m_Layer: 5
-  m_Name: txt_new_game
+  m_Name: txtNewGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1068,7 +1080,7 @@ GameObject:
   - component: {fileID: 550993508}
   - component: {fileID: 550993507}
   m_Layer: 5
-  m_Name: txt_countinue
+  m_Name: txtContinue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1324,7 +1336,7 @@ GameObject:
   - component: {fileID: 1410231176}
   - component: {fileID: 1410231175}
   m_Layer: 5
-  m_Name: btn_settings
+  m_Name: btnSettings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1532,7 +1544,7 @@ GameObject:
   - component: {fileID: 1574363728}
   - component: {fileID: 1574363727}
   m_Layer: 5
-  m_Name: btn_quit
+  m_Name: btn_Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1665,7 +1677,7 @@ GameObject:
   - component: {fileID: 1639440327}
   - component: {fileID: 1639440326}
   m_Layer: 5
-  m_Name: btn_back
+  m_Name: btnBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1927,7 +1939,7 @@ GameObject:
   - component: {fileID: 2056731914}
   - component: {fileID: 2056731913}
   m_Layer: 5
-  m_Name: btn_new_game
+  m_Name: btnNewGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

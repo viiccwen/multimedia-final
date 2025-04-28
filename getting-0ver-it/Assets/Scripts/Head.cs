@@ -8,7 +8,7 @@ public class Head : MonoBehaviour {
 
     void Update() {
         // If the game is paused, do not update the head's rotation
-        if (PauseManager.gameIsPaused) {
+        if (PauseManager.isPaused) {
             return;
         }
 
@@ -28,7 +28,7 @@ public class Head : MonoBehaviour {
     IEnumerator Blink() {
         while (true) {
             // If the game is paused, do not blink
-            if (PauseManager.gameIsPaused) {
+            if (PauseManager.isPaused) {
                 yield return null;
             }
 

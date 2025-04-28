@@ -9,9 +9,20 @@ public class StartMenu : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
     }
 
+    public void Continue()
+    {
+        PauseManager.loadGame = true;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+    }
+
+    public void Options()
+    {
+        
+    }
+
     public void QuitGame()
     {
-        Application.Quit();
         Debug.Log("Quit Game");
+        Application.Quit();
     }
 }
