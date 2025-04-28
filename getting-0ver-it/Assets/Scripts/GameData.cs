@@ -15,7 +15,7 @@ public class GameData
         score = scoreManager.getScore();
         pos = new float[3];
         pos[0] = playerPos.position.x;
-        pos[1] = playerPos.transform.position.y;
+        pos[1] = playerPos.position.y;
         pos[2] = playerPos.transform.position.z;
     }
 }
