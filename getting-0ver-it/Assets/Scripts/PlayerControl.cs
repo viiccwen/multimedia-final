@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
 public class PlayerControl : MonoBehaviour {
-    public Transform hammerHead;
-    public Transform body;
+    [SerializeField] private Transform hammerHead;
+    [SerializeField] private Transform body;
 
     public float maxRange = 2.0f;
 
