@@ -42,7 +42,7 @@ public class PlayerControl : MonoBehaviour {
         Vector3 mouseScreenPos = Input.mousePosition;
         mouseScreenPos.z = Mathf.Abs(Camera.main.transform.position.z);
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
-        Vector3 relativeMousePos = mouseWorldPos     - body.position;
+        Vector3 relativeMousePos = mouseWorldPos - body.position;
 
         float targetRadius = Mathf.Min(relativeMousePos.magnitude, maxRange);
         float targetAngle = Mathf.Atan2(relativeMousePos.y, relativeMousePos.x) * Mathf.Rad2Deg;
