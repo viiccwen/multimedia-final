@@ -4,7 +4,7 @@ public class PlayerControl : MonoBehaviour {
     public Transform hammerHead;
     public Transform body;
 
-    public float maxRange = 1.5f;
+    public float maxRange = 2.0f;
 
     // Smooth factor for hammer
     [Range(1f, 20f)] public float radiusSmoothFactor = 8f;
