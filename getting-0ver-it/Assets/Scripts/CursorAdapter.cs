@@ -16,21 +16,21 @@ public class CursorAdapter : MonoBehaviour
     {
         normalizedVector = new Vector2(1, 0);
     }
-    void SetCentreOfCircle(int x, int y, int z = 0)
+    public void SetCentreOfCircle(int x, int y, int z = 0)
     {
         centreOfCircle.x = x;
         centreOfCircle.y = y;
     }
-    void SetCentreOfCircle(Vector2 centre)
+    public void SetCentreOfCircle(Vector2 centre)
     {
         centreOfCircle = centre;
     }
-    void SetCentreOfCircle(Vector3 centre)
+    public void SetCentreOfCircle(Vector3 centre)
     {
         centreOfCircle.x = centre.x;
         centreOfCircle.y = centre.y;
     }
-    void SetRadiusLength(int length)
+    public void SetRadiusLength(int length)
     {
         if (length <= 0)
         {
@@ -40,11 +40,11 @@ public class CursorAdapter : MonoBehaviour
 
         normalizedLength = length;
     }
-    void UpdatePosition(Vector3 position)
+    public void UpdatePosition(Vector3 position)
     {
         UpdatePosition(new Vector2(position.x, position.y));
     }
-    void UpdatePosition(Vector2 position)
+    public void UpdatePosition(Vector2 position)
     {
         Vector2 vec = position - centreOfCircle;
 
