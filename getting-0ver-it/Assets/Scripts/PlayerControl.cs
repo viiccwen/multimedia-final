@@ -3,12 +3,13 @@
 public class PlayerControl : MonoBehaviour {
     [SerializeField] private Transform hammerHead;
     [SerializeField] private Transform body;
-
+    
+    public bool debugMode = false;
     public float maxRange = 2.0f;
 
     // Smooth factor for hammer
-    [Range(1f, 20f)] public float radiusSmoothFactor = 8f;
-    [Range(1f, 20f)] public float angleSmoothFactor = 10f;
+    [Range(1f, 20f)] public float radiusSmoothFactor = 0.8f;
+    [Range(1f, 20f)] public float angleSmoothFactor = 1f;
 
     // Current radius and angle for hammer (polar coordinates)
     private float currentRadius;
@@ -39,17 +40,24 @@ public class PlayerControl : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate() {
-        Vector3 mouseScreenPos = Input.mousePosition;
-        mouseScreenPos.z = Mathf.Abs(Camera.main.transform.position.z);
-        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
-        Vector3 relativeMousePos = mouseWorldPos - body.position;
+        
+        if(debugMode)
+        {
+            Vector3 mouseScreenPos = Input.mousePosition;
+            mouseScreenPos.z = Mathf.Abs(Camera.main.transform.position.z);
+            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+            Vector3 relativeMousePos = mouseWorldPos - body.position;
 
-        float targetRadius = Mathf.Min(relativeMousePos.magnitude, maxRange);
-        float targetAngle = Mathf.Atan2(relativeMousePos.y, relativeMousePos.x) * Mathf.Rad2Deg;
+            float targetRadius = Mathf.Min(relativeMousePos.magnitude, maxRange);
+            float targetAngle = Mathf.Atan2(relativeMousePos.y, relativeMousePos.x) * Mathf.Rad2Deg;
 
-        // Smooth the radius and angle using Lerp
-        currentRadius = Mathf.Lerp(currentRadius, targetRadius, Time.fixedDeltaTime * radiusSmoothFactor);
-        currentAngle = Mathf.LerpAngle(currentAngle, targetAngle, Time.fixedDeltaTime * angleSmoothFactor);
+            // Smooth the radius and angle using Lerp
+            currentRadius = Mathf.Lerp(currentRadius, targetRadius, Time.fixedDeltaTime * radiusSmoothFactor);
+            currentAngle = Mathf.LerpAngle(currentAngle, targetAngle, Time.fixedDeltaTime * angleSmoothFactor);
+        }
+
+        // We can directly assign the value to variables currentRadius and currentAngle,
+        // so we ignore above code here
 
         // Convert polar coordinates back to Cartesian coordinates
         float smoothedXOffset = currentRadius * Mathf.Cos(currentAngle * Mathf.Deg2Rad);
@@ -83,5 +91,14 @@ public class PlayerControl : MonoBehaviour {
 
         // Update hammer rotation
         hammerHead.rotation = Quaternion.FromToRotation(Vector3.right, newHammerPos - body.position);
+    }
+
+    public void SetCurrentRadius(float radius)
+    {
+        currentRadius = radius;
+    }
+    public void SetCurrentAngle(float angle)
+    {
+        currentAngle = angle;
     }
 }
