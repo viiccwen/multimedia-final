@@ -8,8 +8,8 @@ public class PlayerControl : MonoBehaviour {
     public float maxRange = 2.0f;
 
     // Smooth factor for hammer
-    [Range(1f, 20f)] public float radiusSmoothFactor = 0.8f;
-    [Range(1f, 20f)] public float angleSmoothFactor = 1f;
+    [Range(1f, 20f)] public float radiusSmoothFactor = 8f;
+    [Range(1f, 20f)] public float angleSmoothFactor = 16f;
 
     // Current radius and angle for hammer (polar coordinates)
     private float currentRadius;
@@ -28,6 +28,9 @@ public class PlayerControl : MonoBehaviour {
         hammerRb = hammerHead.GetComponent<Rigidbody2D>();
         bodyCollider = body.GetComponent<Collider2D>();
         hammerCollider = hammerHead.GetComponent<Collider2D>();
+
+        radiusSmoothFactor = 8f;
+        angleSmoothFactor = 16f;
 
         Physics2D.IgnoreCollision(hammerCollider, bodyCollider);
 
