@@ -67,7 +67,7 @@ public class CursorAdapter : MonoBehaviour
 
         Debug.Log(position.x + " " + position.y);
 
-        playerControl.SetCurrentAngle(angle);
-        playerControl.SetCurrentRadius(radius);
+        playerControl.SetAngle(angle);
+        playerControl.SetRadius(radius);
     }
 }
