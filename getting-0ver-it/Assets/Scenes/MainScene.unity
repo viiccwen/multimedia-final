@@ -2998,6 +2998,10 @@ PrefabInstance:
       propertyPath: debugMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2034195991219290672, guid: b1905df71b390c0438297579a7c72300, type: 3}
+      propertyPath: radiusSmoothFactor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7346426558003595009, guid: b1905df71b390c0438297579a7c72300, type: 3}
       propertyPath: m_Name
       value: Player
@@ -11578,7 +11582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerControl: {fileID: 1769768566}
   centreOfCircle: {x: 0, y: 0}
-  normalizedLength: 100
+  normalizedLength: 2
 --- !u!1 &1776617361
 GameObject:
   m_ObjectHideFlags: 0
