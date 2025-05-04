@@ -50,7 +50,7 @@ public class CursorAdapter : MonoBehaviour
 
         // Get the radius by calculating the ratio of vector magnitude to the length of normalized vector
         // note the value of radius must be smaller than 1
-        float radius = Math.Min(1.0f, vec.magnitude / normalizedLength);
+        float radius = Mathf.Min(1.0f, vec.magnitude / normalizedLength);
 
         // Given vector A and B, we have AB = |A||B|cos(theta),
         // and we need to get theta = acos(AB/|A||B|)
