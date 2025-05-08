@@ -444,7 +444,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32621590}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1025,6 +1025,7 @@ MonoBehaviour:
   handPointerUI: {fileID: 1826333907}
   centerPointerUI: {fileID: 32621591}
   smoothSpeed: 0.2
+  yOffset: -100
 --- !u!1 &158992464
 GameObject:
   m_ObjectHideFlags: 0
@@ -3166,11 +3167,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2034195991219290672, guid: b1905df71b390c0438297579a7c72300, type: 3}
       propertyPath: debugMode
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034195991219290672, guid: b1905df71b390c0438297579a7c72300, type: 3}
+      propertyPath: angleSmoothFactor
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2034195991219290672, guid: b1905df71b390c0438297579a7c72300, type: 3}
       propertyPath: radiusSmoothFactor
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7346426558003595009, guid: b1905df71b390c0438297579a7c72300, type: 3}
       propertyPath: m_Name
@@ -11907,7 +11912,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerControl: {fileID: 1769768566}
   centreOfCircle: {x: 0, y: 0}
-  normalizedLength: 2
+  normalizedLength: 145
 --- !u!1 &1776617361
 GameObject:
   m_ObjectHideFlags: 0
