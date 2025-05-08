@@ -17,15 +17,15 @@ public class HandPositionVisualizer : MonoBehaviour
     public RectTransform handPointerUI;
     public RectTransform centerPointerUI;
 
-    // 新增：用於平滑的變數
+    // new: for smooth move
     private Vector2 lastScreenPos;
     private bool hasLastPos = false;
 
-    // 平滑速度
+    // new: smooth speed
     [Range(0.01f, 0.5f)]
     public float smoothSpeed = 0.2f;
 
-    // Offset
+    // new: offset
     public float yOffset = 100f;
 
     void Start()
@@ -53,12 +53,12 @@ public class HandPositionVisualizer : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Center Pointer UI 未設置！");
+            Debug.LogWarning("Center Pointer UI is not set!");
         }
 
         if (handPointerUI == null)
         {
-            Debug.LogWarning("Hand Pointer UI 未設置！");
+            Debug.LogWarning("Hand Pointer UI is not set!");
         }
     }
 
@@ -90,7 +90,7 @@ public class HandPositionVisualizer : MonoBehaviour
 
                     ColorSpacePoint colorPoint = coordinateMapper.MapCameraPointToColorSpace(position);
 
-                    // 無效值檢查
+                    // invalid value check
                     if (float.IsInfinity(colorPoint.X) || float.IsInfinity(colorPoint.Y) ||
                         float.IsNaN(colorPoint.X) || float.IsNaN(colorPoint.Y))
                     {
@@ -104,12 +104,12 @@ public class HandPositionVisualizer : MonoBehaviour
                     if (handPointerUI != null)
                         handPointerUI.gameObject.SetActive(true);
 
-                    // 轉換螢幕座標 (Y反轉 + Clamp + 靈敏度倍率)
+                    // transform screen position
                     float screenX = Mathf.Clamp(colorPoint.X / 1920f * screenWidth, 0, screenWidth);
                     float screenY = Mathf.Clamp((1 - (colorPoint.Y / 1080f)) * screenHeight + yOffset, 0, screenHeight);
                     Vector2 targetScreenPos = new Vector2(screenX, screenY);
 
-                    // 平滑移動
+                    // smooth move
                     if (!hasLastPos)
                     {
                         lastScreenPos = targetScreenPos;
@@ -118,17 +118,14 @@ public class HandPositionVisualizer : MonoBehaviour
 
                     Vector2 smoothPos = Vector2.Lerp(lastScreenPos, targetScreenPos, smoothSpeed);
 
-                    Vector2 relativePos = smoothPos - screenCenter;
+                    Vector2 relativePos = targetScreenPos - screenCenter;
 
                     handPointerUI.position = smoothPos;
 
-                    // 控制玩家位置
+                    // Control player position
                     cursorAdapter.UpdatePosition(relativePos);
 
                     lastScreenPos = smoothPos;
-
-                    // Debug 輸出
-                    Debug.Log($"手指螢幕座標位置 (平滑後): X = {smoothPos.x}, Y = {smoothPos.y}");
                 }
             }
         }
