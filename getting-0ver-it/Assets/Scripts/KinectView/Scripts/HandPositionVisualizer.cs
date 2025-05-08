@@ -25,6 +25,9 @@ public class HandPositionVisualizer : MonoBehaviour
     [Range(0.01f, 0.5f)]
     public float smoothSpeed = 0.2f;
 
+    // Offset
+    public float yOffset = 100f;
+
     void Start()
     {
         screenWidth = Screen.width;
@@ -103,7 +106,7 @@ public class HandPositionVisualizer : MonoBehaviour
 
                     // 轉換螢幕座標 (Y反轉 + Clamp + 靈敏度倍率)
                     float screenX = Mathf.Clamp(colorPoint.X / 1920f * screenWidth, 0, screenWidth);
-                    float screenY = Mathf.Clamp((1 - (colorPoint.Y / 1080f)) * screenHeight, 0, screenHeight);
+                    float screenY = Mathf.Clamp((1 - (colorPoint.Y / 1080f)) * screenHeight + yOffset, 0, screenHeight);
                     Vector2 targetScreenPos = new Vector2(screenX, screenY);
 
                     // 平滑移動
