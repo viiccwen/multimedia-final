@@ -16,14 +16,20 @@ public class HandPositionVisualizer : MonoBehaviour
     public RectTransform handPointerUI;
     public RectTransform centerPointerUI;
 
+    // 新增：用於平滑的變數
+    private Vector2 lastScreenPos;
+    private bool hasLastPos = false;
+
+    // 平滑速度
+    [Range(0.01f, 0.5f)]
+    public float smoothSpeed = 0.2f;
+
     void Start()
     {
-        // 螢幕解析度
         screenWidth = Screen.width;
         screenHeight = Screen.height;
         screenCenter = new Vector2(screenWidth / 2, screenHeight / 2);
 
-        // 初始化Kinect
         sensor = KinectSensor.GetDefault();
 
         if (sensor != null)
@@ -37,7 +43,6 @@ public class HandPositionVisualizer : MonoBehaviour
             }
         }
 
-        // 初始化螢幕中心指標
         if (centerPointerUI != null)
         {
             centerPointerUI.position = screenCenter;
@@ -81,26 +86,40 @@ public class HandPositionVisualizer : MonoBehaviour
 
                     ColorSpacePoint colorPoint = coordinateMapper.MapCameraPointToColorSpace(position);
 
-                    // colorPoint.X, colorPoint.Y 可能會是 NaN（當追蹤不到時）
-                    if (float.IsInfinity(colorPoint.X) || float.IsInfinity(colorPoint.Y))
+                    // 無效值檢查
+                    if (float.IsInfinity(colorPoint.X) || float.IsInfinity(colorPoint.Y) ||
+                        float.IsNaN(colorPoint.X) || float.IsNaN(colorPoint.Y))
                     {
-                        handPointerUI.gameObject.SetActive(false);
+                        if (handPointerUI != null)
+                            handPointerUI.gameObject.SetActive(false);
+
+                        hasLastPos = false;
+                        continue;
                     }
-                    else
-                    {
+
+                    if (handPointerUI != null)
                         handPointerUI.gameObject.SetActive(true);
 
-                        // 將彩色畫面座標轉換成螢幕座標
-                        float screenX = Mathf.Clamp(colorPoint.X / 1920f * screenWidth, 0, screenWidth);
-                        float screenY = Mathf.Clamp((1 - (colorPoint.Y / 1080f)) * screenHeight, 0, screenHeight);
-                        Vector2 screenPos =  new Vector2(screenX, screenY);
+                    // 轉換螢幕座標 (Y反轉 + Clamp + 靈敏度倍率)
+                    float screenX = Mathf.Clamp(colorPoint.X / 1920f * screenWidth, 0, screenWidth);
+                    float screenY = Mathf.Clamp((1 - (colorPoint.Y / 1080f)) * screenHeight, 0, screenHeight);
+                    Vector2 targetScreenPos = new Vector2(screenX, screenY);
 
-                        handPointerUI.position = screenPos;
+                    // 平滑移動
+                    if (!hasLastPos)
+                    {
+                        lastScreenPos = targetScreenPos;
+                        hasLastPos = true;
                     }
 
-                    // Debug Console 輸出
-                    Debug.Log($"手指螢幕座標位置: X = {colorPoint.X}, Y = {colorPoint.Y}");
-                    Debug.Log($"感測範圍中心點: X = {screenCenter.x}, Y = {screenCenter.y}");
+                    Vector2 smoothPos = Vector2.Lerp(lastScreenPos, targetScreenPos, smoothSpeed);
+
+                    handPointerUI.position = smoothPos;
+
+                    lastScreenPos = smoothPos;
+
+                    // Debug 輸出
+                    Debug.Log($"手指螢幕座標位置 (平滑後): X = {smoothPos.x}, Y = {smoothPos.y}");
                 }
             }
         }
