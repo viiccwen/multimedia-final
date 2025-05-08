@@ -8,6 +8,7 @@ public class HandPositionVisualizer : MonoBehaviour
     private BodyFrameReader bodyReader;
     private Body[] bodies;
     private CoordinateMapper coordinateMapper;
+    public CursorAdapter cursorAdapter;
 
     private int screenWidth;
     private int screenHeight;
@@ -114,7 +115,12 @@ public class HandPositionVisualizer : MonoBehaviour
 
                     Vector2 smoothPos = Vector2.Lerp(lastScreenPos, targetScreenPos, smoothSpeed);
 
+                    Vector2 relativePos = smoothPos - screenCenter;
+
                     handPointerUI.position = smoothPos;
+
+                    // ±±¨îª±®a¦ì¸m
+                    cursorAdapter.UpdatePosition(relativePos);
 
                     lastScreenPos = smoothPos;
 

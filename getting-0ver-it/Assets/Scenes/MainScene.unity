@@ -1021,8 +1021,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a0ffcdd24e21141ba3b2c2866046a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorAdapter: {fileID: 1769768567}
   handPointerUI: {fileID: 1826333907}
   centerPointerUI: {fileID: 32621591}
+  smoothSpeed: 0.2
 --- !u!1 &158992464
 GameObject:
   m_ObjectHideFlags: 0
