@@ -76,7 +76,7 @@ public class PlayerControl : MonoBehaviour {
         contactFilter.useLayerMask = true;
         contactFilter.layerMask = LayerMask.GetMask("Default");
         Collider2D[] results = new Collider2D[5];
-        int collisionCount = hammerRb.OverlapCollider(contactFilter, results);
+        int collisionCount = hammerRb.Overlap(contactFilter, results);
         if (collisionCount > 0)  // If collided with scene objects
         {
             // Update body pos
@@ -85,7 +85,7 @@ public class PlayerControl : MonoBehaviour {
             Vector3 force = (targetBodyPos - body.position) * 80.0f;
             bodyRb.AddForce(force);
 
-            bodyRb.velocity = Vector2.ClampMagnitude(bodyRb.velocity, 6);
+            bodyRb.linearVelocity = Vector2.ClampMagnitude(bodyRb.linearVelocity, 6);
         }
 
         // Compute new hammer pos
