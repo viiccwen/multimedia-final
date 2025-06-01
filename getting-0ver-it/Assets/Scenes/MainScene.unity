@@ -2513,7 +2513,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 1e2e5dc0ff1a4b3409d1db8d7bb94d8c, type: 3}
     - target: {fileID: 2034195991219290672, guid: b1905df71b390c0438297579a7c72300, type: 3}
       propertyPath: debugMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2034195991219290672, guid: b1905df71b390c0438297579a7c72300, type: 3}
       propertyPath: m_Enabled
@@ -8210,7 +8210,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Congrats! You pass the mutimedia course!
+  m_text: Congrats! You pass the multimedia course!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8403,10 +8403,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1238535656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00018692, y: 404.15}
-  m_SizeDelta: {x: 571.9337, y: 27.1022}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -0.000080386, y: -44.029}
+  m_SizeDelta: {x: 571.9337, y: 27.102203}
   m_Pivot: {x: 0.49999976, y: 0.5000011}
 --- !u!114 &1093655131
 MonoBehaviour:

@@ -6,24 +6,22 @@ using UnityEngine.UI;
 public class AudioSourceController : MonoBehaviour
 {
     [SerializeField] private Slider musicSlider;
-    private static AudioSourceController instance;
-    private AudioSource audioSource;
+    private static AudioSource audioSource;
 
     void Awake()
     {
-        if (instance != null && instance != this)
+        if (audioSource != null && audioSource != this.GetComponent<AudioSource>())
         {
-            Destroy(this);
+            Destroy(this.gameObject);
             return;
         }
         
-        instance = this;
+        audioSource = GetComponent<AudioSource>();
         DontDestroyOnLoad(this);
     }
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         audioSource.Play();
     }
 
